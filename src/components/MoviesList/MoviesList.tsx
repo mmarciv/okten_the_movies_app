@@ -21,8 +21,9 @@ const MoviesList = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         if (genreId) {
+            // @ts-ignore
             dispatch(getMoviesByGenre({id: genreId}));
         } else {
             dispatch(getPopularMovie());
@@ -31,7 +32,8 @@ const MoviesList = () => {
 
     return (
         <div className={'movies-list'}>
-            {movies && movies.results && movies.results.map((card:IMovie) => {
+            {movies.toString()}
+            {movies && movies.results && movies.results.map((card: IMovie) => {
                 return <MoviesListCard key={card.id} card={card}/>
             })}
         </div>
