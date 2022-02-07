@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path={'/'} element={<SiteLayout/>}>
           <Route path={'/'} element={<MoviesPage/>}/>
+          <Route path={'/genre/:genreId'} element={<MoviesPage/>}/>
           <Route path={'/movie/:movieId'} element={<MoviesDetailsPage/>}/>
           <Route path={'*'} element={<NotFound/>}/>
         </Route>
