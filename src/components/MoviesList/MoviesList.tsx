@@ -32,7 +32,6 @@ const MoviesList = () => {
 
     return (
         <div className={'movies-list'}>
-            {movies.toString()}
             {movies && movies.results && movies.results.map((card: IMovie) => {
                 return <MoviesListCard key={card.id} card={card}/>
             })}
