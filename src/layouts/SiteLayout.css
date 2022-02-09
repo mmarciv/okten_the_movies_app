@@ -7,16 +7,17 @@
     gap: 10px;
     flex-wrap: wrap;
     padding: 30px 10px;
-}
-
-.content {
-    padding: 10px;
+    box-sizing: border-box;
 }
 
 .header__link a {
     color: #fff;
     text-transform: capitalize;
     text-decoration: none;
+}
+
+.content {
+    padding: 10px;
 }
 
 .footer {

@@ -16,12 +16,11 @@ export const getPopularMovie = createAsyncThunk(
 
 export const getMovieDetails = createAsyncThunk(
     'movieSlice/getMovieDetails',
-    async ({id}, {rejectWithValue}) => {
+    async ({id}, {dispatch}) => {
         try {
-            const movies = await movieService.getById(id);
-            return movies;
+            return await movieService.getById(id);
         } catch (e) {
-            return rejectWithValue(e.message);
+            return e.message;
         }
     }
 )
@@ -30,8 +29,7 @@ export const getMoviesByGenre = createAsyncThunk(
     'movieSlice/getMoviesByGenre',
     async ({id}, {dispatch}) => {
         try {
-            const movies = await movieService.getByGenreId(id);
-            dispatch(refreshMovies(movies));
+            return await movieService.getByGenreId(id);
         } catch (e) {
             return e.message;
         }
@@ -44,22 +42,20 @@ const movieSlice = createSlice({
         movies: [],
         movie: null,
     },
-    reducers: {
-        refreshMovies: (state, action) => {
-            state.movies = action.payload;
-        }
-    },
+    reducers: {},
     extraReducers: {
         [getPopularMovie.fulfilled]: (state, action) => {
             state.movies = action.payload;
         },
         [getMovieDetails.fulfilled]: (state, action) => {
             state.movie = action.payload;
+        },
+        [getMoviesByGenre.fulfilled]: (state, action) => {
+            state.movies = action.payload;
         }
     }
 });
 
 const movieReducer = movieSlice.reducer;
-const {refreshMovies} = movieSlice.actions;
 
-export {movieReducer, refreshMovies};
+export {movieReducer};
