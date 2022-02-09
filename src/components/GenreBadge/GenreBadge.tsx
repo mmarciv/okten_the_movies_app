@@ -1,10 +1,12 @@
 import React from 'react';
-import {IGenre} from "../../models/Genre";
+
 import {NavLink} from "react-router-dom";
+
+import '../../layouts/SiteLayout.css';
 
 const GenreBadge = ({genre}: any) => {
     return (
-        <div>
+        <div className={'header__link'}>
             <NavLink to={'/genre/' + genre.id}>{genre.name}</NavLink>
         </div>
     );

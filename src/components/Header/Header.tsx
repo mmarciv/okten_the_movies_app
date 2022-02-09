@@ -5,6 +5,8 @@ import {IGenre} from "../../models/Genre";
 import GenreBadge from "../GenreBadge/GenreBadge";
 import {NavLink} from "react-router-dom";
 
+import '../../layouts/SiteLayout.css';
+
 const Header = () => {
 
     const {genres, status, error} = useSelector((state: any) => {
@@ -19,10 +21,8 @@ const Header = () => {
 
     return (
         <>
-            {/*{status === 'pending' && <h1>Loading ...</h1>}*/}
-            {/*{error && <h1>{error}</h1>}*/}
-            <div>
-                <NavLink to={''}>POPULAR</NavLink>
+            <div className={'header__link'}>
+                <NavLink to={''}>Popular</NavLink>
             </div>
             {genres && genres.map((genre:IGenre) => {
                 return <GenreBadge key={genre.id} genre={genre}/>
